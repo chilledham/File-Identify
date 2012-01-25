@@ -57,6 +57,7 @@ sub _parse_item {
     # set size
     $item->{size} = (stat $raw_item)[7];
 
+    # check if this item has an extension
     my ($path,$name,$ext) = $raw_item =~ /$self->{_re}->{ext}/;
 
     if ($path && $name && $ext) {
@@ -66,6 +67,7 @@ sub _parse_item {
         $item->{ext} = lc $item->{ext};
     }
     else {
+        # looks like an item without an extension
         ($path,$name) = $raw_item =~ /$self->{_re}->{noext}/;
         @$item{ qw(path name) } = ($path,$name);
     }

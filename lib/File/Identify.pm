@@ -3,7 +3,6 @@ package File::Identify;
 use 5.010;
 use strict;
 use warnings;
-use feature qw'say';
 use Carp;
 use Data::Dumper;
 
@@ -79,7 +78,12 @@ sub scan {
 # send to F::I::Item
 sub item {
     my $self = shift;
+    return $self->{_items}->item(@_);
+}
 
+# same as above. sometimes it feels more natural to request your `items' over just `item'
+sub items {
+    my $self = shift;
     return $self->{_items}->item(@_);
 }
 
