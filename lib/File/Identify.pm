@@ -81,7 +81,7 @@ sub item {
     return $self->{_items}->item(@_);
 }
 
-# same as above. sometimes it feels more natural to request your `items' over just `item'
+# same as above. sometimes it feels more natural to request your `items' over `item'
 sub items {
     my $self = shift;
     return $self->{_items}->item(@_);
@@ -92,6 +92,7 @@ sub _rscan {
     my $self = shift;
     my $file = shift;
 
+    # trim any trailing slashes
     $file =~ s/\/+\Z//g;
 
     if (-d $file) {
@@ -102,6 +103,7 @@ sub _rscan {
         opendir DIR, $file
             or croak "Could not open $file: $!\n";
         
+        # collect everything except '.' and '..' from our directory handle
         my @files = map { "$file/$_" } grep { ! /\A\.{1,2}\Z/ } readdir DIR;
         closedir DIR;
 

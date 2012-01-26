@@ -8,10 +8,20 @@ use Data::Dumper;
 
 my @items; # store for all items
 
+# create new F::I::I object
 sub new {
-    return bless {}, shift;
+    my $class = shift;
+
+    # bless early so we can call package methods
+    my $self = bless {}, $class;
+    $self->_init_regex();
+
+    return $self;
 }
 
+# when called in list context returns an array of all items
+# otherwise returns undef.
+# accepts an optional list of items to check and store
 sub item {
     my $self      = shift;
     my @new_items = @_;
@@ -23,15 +33,14 @@ sub item {
     : return;
 }
 
+# adds items to @items
+# checks if the item is a directory, parses item into pieces (path, name, extension (where applicable))
 sub _parse_item {
     my $self     = shift;
     my $raw_item = shift;
 
     # remove any trailing slashes
     $raw_item =~ s/\/+\Z//;
-
-    $self->_init_regex()
-        unless $self->{_re};
 
     # item shell
     my $item = {
@@ -77,6 +86,7 @@ sub _parse_item {
     return;
 }
 
+# precompiles some regexes that will be used to parse items
 sub _init_regex {
     my $self = shift;
 
