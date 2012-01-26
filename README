@@ -1,7 +1,7 @@
 File-Identify
 
     File::Identify performs recursive searches on a directory until
-    all files are discovered. The module currently does not support
+    all files are identified. The module currently does not support
     depth control, and also likely reimplements many several wheels.
     What better way to learn & play?
 
@@ -25,18 +25,7 @@ perldoc command.
 
 You can also look for information at:
 
-    RT, CPAN's request tracker (report bugs here)
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=File-Identify
-
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/File-Identify
-
-    CPAN Ratings
-        http://cpanratings.perl.org/d/File-Identify
-
-    Search CPAN
-        http://search.cpan.org/dist/File-Identify/
-
+    Lies! You can't find any further information.
 
 LICENSE AND COPYRIGHT
 
