@@ -6,7 +6,7 @@ use warnings;
 use Carp;
 use Data::Dumper;
 
-use lib '/Users/collin/scripts/git/File-Identify/lib';
+use lib '../';
 use File::Identify::Item;
 
 our $VERSION = '0.01';
